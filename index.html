@@ -27,6 +27,16 @@
 /></noscript>
 <!-- End Meta Pixel Code -->
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18578531568"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18578531568');
+</script>
+<!-- End Google tag -->
+
 <style>
   /* ===== ISOLATION CAP =========================================================
      Protects this page's styling from theme / Elementor / plugin CSS bleed.
@@ -598,7 +608,7 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section style="padding-top:8px">
+<section id="how-it-works" style="padding-top:8px">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="kick">Three steps to a calmer trip</div>
@@ -646,7 +656,7 @@
 </section>
 
 <!-- SAVE STORY -->
-<section>
+<section id="real-save">
   <div class="wrap">
     <div class="save">
       <div class="vid rv">
@@ -745,7 +755,7 @@
   </div>
 </section>
 
-<section style="padding-top:8px">
+<section id="meet-dave" style="padding-top:8px">
   <div class="wrap">
     <div class="founder rv">
       <div>
@@ -812,5 +822,19 @@
   document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%3,3)*70)+'ms';io.observe(el)});
 </script>
 <script src="https://videopress.com/videopress-iframe.js"></script>
+<script>
+/* Pass ad UTMs and fbclid through to the register links. Keeps the old button label as cta. */
+(function(){
+  var q=new URLSearchParams(location.search),keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid'];
+  if(!keys.some(function(k){return q.has(k);}))return;
+  document.querySelectorAll('a[href*="rvweather.com/register/"]').forEach(function(a){
+    var u=new URL(a.href),old=u.searchParams.get('utm_content');
+    if(old&&!u.searchParams.has('cta'))u.searchParams.set('cta',old);
+    keys.forEach(function(k){if(q.has(k))u.searchParams.set(k,q.get(k));});
+    a.href=u.toString();
+  });
+})();
+</script>
 </body>
 </html>
+
